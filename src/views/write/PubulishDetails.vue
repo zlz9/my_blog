@@ -84,6 +84,9 @@ export default {
           message: "文章发布成功！",
           type: "success",
         });
+        setTimeout(() => {
+          this.$router.push("/");
+        }, 1000);
       } else {
         this.$message({
           showClose: true,

@@ -45,6 +45,11 @@ const routes = [
     name: "technology",
     component: () => import("../views/technology/MyTechnology.vue"),
   },
+  {
+    path: "/articlebytags",
+    name: "articlebytags",
+    component: () => import("../views/article/ArticleTags.vue"),
+  },
 ];
 
 const router = new VueRouter({

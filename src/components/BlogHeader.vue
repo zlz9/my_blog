@@ -3,31 +3,27 @@
     <!-- 背景图 -->
     <div class="web_info" ref="nav"></div>
     <el-menu
-      :default-active="activeIndex"
+      :default-active="this.$router.path"
       id="el-menu-demo"
       mode="horizontal"
       :class="isFixed ? 'fixed' : ''"
       @select="handleSelect"
+      :router="true"
     >
-      <el-menu-item index="1">
-        <router-link to="/">首页</router-link>
-      </el-menu-item>
+      <el-menu-item index="/"> 首页 </el-menu-item>
       <el-submenu index="2">
         <template slot="title">文章分类</template>
-        <el-menu-item index="2-1">java</el-menu-item>
-        <el-menu-item index="2-2">vue</el-menu-item>
-        <el-menu-item index="2-3">js</el-menu-item>
-        <el-menu-item index="2-3">python</el-menu-item>
+        <el-menu-item
+          v-for="(tag, index) in tags"
+          :key="tag.id"
+          :index="location"
+          :route="{ path: location, query: { id: tag.id } }"
+          >{{ tag.tagName }}</el-menu-item
+        >
       </el-submenu>
-      <el-menu-item index="5">
-        <router-link to="/technology">我的技术栈</router-link>
-      </el-menu-item>
-      <el-menu-item id="write_blog" index="6">
-        <router-link to="/write">写文章</router-link>
-      </el-menu-item>
-      <el-menu-item index="7" class="login"
-        ><router-link to="/login">登录</router-link></el-menu-item
-      >
+      <el-menu-item index="/technology"> 我的技术栈 </el-menu-item>
+      <el-menu-item id="write_blog" index="/write"> 写文章 </el-menu-item>
+      <el-menu-item index="/login" class="login">登录</el-menu-item>
       <el-menu-item index="8" class="regist">注册</el-menu-item>
     </el-menu>
     <div class="line"></div>
@@ -40,14 +36,19 @@ export default {
   data() {
     return {
       activeIndex: "1",
-      activeIndex2: "1",
       isFixed: false,
+      tags: [],
+      location: "/articlebytags",
     };
   },
   mounted() {
     window.onscroll = this.handleScroll;
+    this.getTags();
   },
   methods: {
+    goArticleByTag(a) {
+      console.log(a);
+    },
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
     },
@@ -58,6 +59,20 @@ export default {
       } else {
         this.isFixed = false;
       }
+    },
+    /**
+     * 获取tags
+     */
+    getTags() {
+      this.$http
+        .get("/tags")
+        .then((result) => {
+          this.tags = result.data.data;
+          console.log(this.tags);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };

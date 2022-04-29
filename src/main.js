@@ -7,6 +7,8 @@ import router from "./router";
 import store from "./store";
 import mavonEditor from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
+import dayjs from "dayjs";
+Vue.prototype.dayjs = dayjs;
 // use
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:8081/";

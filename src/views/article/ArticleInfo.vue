@@ -42,9 +42,9 @@ export default {
 .article_info {
   position: relative;
   margin: 0 auto;
-  border: 1px solid red;
   width: 1200px;
-  height: 600px;
+  min-height: 300px;
+  max-height: 1200px;
   bottom: 300px;
   h2 {
     text-align: center;

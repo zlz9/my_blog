@@ -5,40 +5,28 @@
     <!-- user信息 -->
     <div class="userInfo">
       <div class="avator">
-        <img src="../assets/logo.png" alt="" />
+        <a href="https://github.com/?msclkid=9a7a3d41c6e711ecb510024c8d92cbb7"
+          ><img src="../assets/avator/R-C.jpg" alt=""
+        /></a>
       </div>
       <h3 class="username">zlz9</h3>
       <el-collapse v-model="activeName" accordion>
-        <el-collapse-item title="一致性 Consistency" name="1">
-          <div>
-            与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；
-          </div>
-          <div>
-            在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。
-          </div>
+        <el-collapse-item title="我的爱好" name="1">
+          <div>{{ favorite }}</div>
+          <div></div>
         </el-collapse-item>
-        <el-collapse-item title="反馈 Feedback" name="2">
-          <div>
-            控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；
-          </div>
-          <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+        <el-collapse-item title="有趣的观点" name="2">
+          <div>{{ funnyView }}</div>
+          <div></div>
         </el-collapse-item>
-        <el-collapse-item title="效率 Efficiency" name="3">
-          <div>简化流程：设计简洁直观的操作流程；</div>
-          <div>
-            清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；
-          </div>
-          <div>
-            帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。
-          </div>
+        <el-collapse-item title="怎样学习更有效率" name="3">
+          <div>{{ efficiency }}</div>
+          <div></div>
+          <div></div>
         </el-collapse-item>
-        <el-collapse-item title="可控 Controllability" name="4">
-          <div>
-            用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；
-          </div>
-          <div>
-            结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。
-          </div>
+        <el-collapse-item title="怎样学好前端和后端" name="4">
+          <div>{{ howToStudy }}</div>
+          <div></div>
         </el-collapse-item>
       </el-collapse>
     </div>
@@ -52,6 +40,13 @@ export default {
   data() {
     return {
       activeName: "",
+      favorite:
+        "喜欢各种新奇的事物，喜欢新的技术，喜欢逛各种的技术网站。比如csdn、github、zhihu",
+      funnyView: "世界很大，我想去看看",
+      efficiency:
+        "学习的捷径就是对它感兴趣，没有兴趣的学习是枯燥的。对做一件事务怀有激情，这时的效率是最高的",
+      howToStudy:
+        "我学习的动力就是对他感兴趣，世界上想做的事情无非两种。一种想做，一种不想做。既然确定了就前进吧",
     };
   },
   methods: {},
