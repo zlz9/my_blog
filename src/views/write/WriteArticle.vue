@@ -8,6 +8,8 @@
         @imgAdd="imgAdd"
         @imgDel="imgDel"
         ref="md"
+        :toolbarsBackground="background"
+        :previewBackground="background2"
       />
     </div>
   </div>
@@ -24,7 +26,13 @@ export default {
         content: "",
         contentHtml: "",
       },
+      background: "#EEE8AA",
+      background2: "#FDF5E6",
     };
+  },
+  mounted() {
+    this.editor();
+    console.log(this.$refs.md, "mavon-editor");
   },
   methods: {
     save(value, render) {
@@ -46,6 +54,23 @@ export default {
       });
     },
     imgDel() {},
+    editor() {
+      let id = this.$route.query.id;
+      this.$http
+        .post(`/editorArticles?id=${id}`)
+        .then((res) => {
+          this.articleInfo = res.data.data;
+          this.$refs.md.d_value = this.articleInfo.content;
+          this.render = this.articleInfo.contentHtml;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    change(value, render) {
+      console.log(value, "value");
+      console.log(render, "render");
+    },
   },
 };
 </script>

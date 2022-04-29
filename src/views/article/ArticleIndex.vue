@@ -10,16 +10,21 @@
           :data-title="item.title"
         >
           <h3>{{ item.title }}</h3>
-          <el-button type="primary" class="btn1" size="mini" @click="editor"
+          <el-button
+            type="primary"
+            class="btn1"
+            size="mini"
+            @click="editor(item.id)"
             >修改</el-button
           >
-          <el-button
-            type="danger"
-            class="btn2"
-            size="mini"
-            @click="deleteArticle(item.id)"
-            >删除</el-button
+          <el-popconfirm
+            title="这是一段内容确定删除吗？"
+            @confirm="deleteArticle(item.id)"
           >
+            <el-button slot="reference" type="danger" class="btn2" size="mini"
+              >删除</el-button
+            >
+          </el-popconfirm>
           <div class="time">
             {{ dayjs(item.createTime).format("YYYY-MM-DD HH:mm") }}
           </div>
@@ -75,6 +80,7 @@ export default {
       /**
        * 整理参数发请求
        */
+      console.log("触发了");
       this.$http
         .delete(`deleteArticle?id=${id}`)
         .then((result) => {
@@ -99,7 +105,10 @@ export default {
           console.log(error);
         });
     },
-    editor() {},
+    editor(id) {
+      console.log(id);
+      this.$router.push({ name: "write", query: { id: id } });
+    },
   },
 };
 </script>

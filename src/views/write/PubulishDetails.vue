@@ -40,6 +40,7 @@ export default {
       tags: "",
       title: "",
       tag: [],
+      articleInfo: "",
     };
   },
   mounted() {
@@ -103,11 +104,8 @@ export default {
         .get("/tags")
         .then((result) => {
           this.tags = result.data.data;
-          console.log(this.tags);
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => {});
     },
     getSummary() {
       this.$http
