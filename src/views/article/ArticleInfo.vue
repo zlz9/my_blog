@@ -49,8 +49,13 @@ export default {
   h2 {
     text-align: center;
   }
-  .content p {
+  .content {
     font-size: 18px;
+    border-radius: 10px;
+    color: #fff;
+    background-color: rgb(8, 54, 54);
+    min-height: 400px;
+    padding: 10px;
   }
 }
 </style>

@@ -22,9 +22,9 @@
           </el-checkbox-button>
         </el-checkbox-group>
       </el-form-item>
-      <el-form-item size="medium" class="btn">
-        <el-button type="primary" @click="onSubmit">发布</el-button>
-      </el-form-item>
+      <!-- <el-form-item size="medium" class="btn"> -->
+      <el-button type="primary" @click="onSubmit" class="btn">发布</el-button>
+      <!-- </el-form-item> -->
     </el-form>
     <!-- 密码确认弹框 -->
   </div>
@@ -157,7 +157,7 @@ export default {
 }
 .btn {
   position: relative;
-  left: 400px;
+  left: 500px;
   bottom: 50px;
 }
 </style>

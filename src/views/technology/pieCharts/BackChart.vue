@@ -31,7 +31,7 @@ export default {
         {
           name: "rear end",
           type: "pie",
-          radius: "50%",
+          radius: "60%",
           data: [
             { value: 1048, name: "Java" },
             { value: 735, name: "Springboot" },

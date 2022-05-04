@@ -11,7 +11,7 @@ import dayjs from "dayjs";
 Vue.prototype.dayjs = dayjs;
 // use
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:8081/";
+axios.defaults.baseURL = "http://124.221.186.211:5504";
 
 Vue.prototype.$http = axios;
 Vue.use(mavonEditor);

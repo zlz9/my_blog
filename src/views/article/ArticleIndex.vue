@@ -33,6 +33,10 @@
         </li>
       </ul>
     </div>
+    <el-card shadow="always" class="notice">
+      <h3 class="title">网站公告</h3>
+      <div class="info">{{ info }}</div>
+    </el-card>
   </div>
 </template>
 
@@ -43,6 +47,7 @@ export default {
     return {
       data: [],
       time: "",
+      info: "创建该网站的目的是为了springboot，和方便自身的学习，未来的ui界面会大改。暂时不对外提供服务。需要源码可以Q我。只能作为学习和交流用途，不得商用",
     };
   },
   mounted() {
@@ -166,5 +171,17 @@ export default {
     box-shadow: 10px 10px 5px #888888;
   }
   // list-style: none;
+  p {
+    position: relative;
+    font-size: 18px;
+    bottom: 5px;
+  }
+}
+.notice {
+  position: absolute;
+  width: 350px;
+  height: 300px;
+  right: 10px;
+  top: 200px;
 }
 </style>

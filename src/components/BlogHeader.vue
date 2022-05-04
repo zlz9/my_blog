@@ -23,8 +23,9 @@
       </el-submenu>
       <el-menu-item index="/technology"> 我的技术栈 </el-menu-item>
       <el-menu-item id="write_blog" index="/write"> 写文章 </el-menu-item>
-      <el-menu-item index="/login" class="login">登录</el-menu-item>
-      <el-menu-item index="8" class="regist">注册</el-menu-item>
+      <!-- 暂时不对外提供服务 -->
+      <!-- <el-menu-item index="/login" class="login">登录</el-menu-item>
+      <el-menu-item index="8" class="regist">注册</el-menu-item> -->
     </el-menu>
     <div class="line"></div>
   </div>
