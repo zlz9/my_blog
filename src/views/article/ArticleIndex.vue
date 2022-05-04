@@ -10,21 +10,18 @@
           :data-title="item.title"
         >
           <h3>{{ item.title }}</h3>
-          <el-button
-            type="primary"
-            class="btn1"
-            size="mini"
-            @click="editor(item.id)"
+          <el-button type="primary" class="btn1" size="mini" @click="editer"
             >修改</el-button
           >
-          <el-popconfirm
-            title="这是一段内容确定删除吗？"
-            @confirm="deleteArticle(item.id)"
+
+          <el-button
+            slot="reference"
+            type="danger"
+            class="btn2"
+            size="mini"
+            @click="del(item.id)"
+            >删除</el-button
           >
-            <el-button slot="reference" type="danger" class="btn2" size="mini"
-              >删除</el-button
-            >
-          </el-popconfirm>
           <div class="time">
             {{ dayjs(item.createTime).format("YYYY-MM-DD HH:mm") }}
           </div>
@@ -105,9 +102,39 @@ export default {
           console.log(error);
         });
     },
-    editor(id) {
-      console.log(id);
-      this.$router.push({ name: "write", query: { id: id } });
+    editer() {
+      this.$message({
+        showClose: true,
+        message: "暂时不提供修改文章功能",
+        type: "error",
+      });
+    },
+    del(id) {
+      this.$prompt("请输入密码", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        inputValidator: (value) => {
+          if (value == "admin123") {
+            return true;
+          }
+          return false;
+        },
+        inputErrorMessage: "密码错误",
+      })
+        .then(({ value }) => {
+          this.deleteArticle(id);
+          this.$message({
+            type: "success",
+            message: "密码正确 ",
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          this.$message({
+            type: "info",
+            message: "取消输入",
+          });
+        });
     },
   },
 };

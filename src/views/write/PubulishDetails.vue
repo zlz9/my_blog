@@ -26,6 +26,7 @@
         <el-button type="primary" @click="onSubmit">发布</el-button>
       </el-form-item>
     </el-form>
+    <!-- 密码确认弹框 -->
   </div>
 </template>
 
@@ -41,6 +42,7 @@ export default {
       title: "",
       tag: [],
       articleInfo: "",
+      password: "",
     };
   },
   mounted() {
@@ -51,7 +53,7 @@ export default {
       this.tag.push(tag);
       console.log(tag);
     },
-    onSubmit() {
+    publish() {
       /**
        * 判断是否为空
        */
@@ -65,13 +67,7 @@ export default {
         category: this.category,
         tags: this.tag,
       };
-      if (
-        this.title &&
-        this.summary &&
-        this.body.content &&
-        this.category &&
-        this.tags
-      ) {
+      if (this.body.content) {
         this.$http
           .post("/publish", data)
           .then((result) => {
@@ -105,7 +101,9 @@ export default {
         .then((result) => {
           this.tags = result.data.data;
         })
-        .catch((err) => {});
+        .catch((err) => {
+          console.log(err);
+        });
     },
     getSummary() {
       this.$http
@@ -116,6 +114,33 @@ export default {
         })
         .catch((err) => {
           console.log(err);
+        });
+    },
+    onSubmit() {
+      this.$prompt("请输入密码", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        inputValidator: (value) => {
+          if (value == "admin123") {
+            return true;
+          }
+          return false;
+        },
+        inputErrorMessage: "密码错误",
+      })
+        .then(({ value }) => {
+          this.publish();
+          this.$message({
+            type: "success",
+            message: "密码正确 ",
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          this.$message({
+            type: "info",
+            message: "取消输入",
+          });
         });
     },
   },

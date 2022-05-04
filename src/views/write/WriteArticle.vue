@@ -55,17 +55,20 @@ export default {
     },
     imgDel() {},
     editor() {
-      let id = this.$route.query.id;
-      this.$http
-        .post(`/editorArticles?id=${id}`)
-        .then((res) => {
-          this.articleInfo = res.data.data;
-          this.$refs.md.d_value = this.articleInfo.content;
-          this.render = this.articleInfo.contentHtml;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      /**
+       * 先不开发修改文章功能
+       */
+      // let id = this.$route.query.id;
+      // this.$http
+      //   .post(`/editorArticles?id=${id}`)
+      //   .then((res) => {
+      //     this.articleInfo = res.data.data;
+      //     this.$refs.md.d_value = this.articleInfo.content;
+      //     this.render = this.articleInfo.contentHtml;
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
     },
     change(value, render) {
       console.log(value, "value");
