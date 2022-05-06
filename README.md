@@ -22,3 +22,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+### 后端地址
+- https://github.com/zlz9/myBlog.git
+- 前端预览地址：域名还在备案
